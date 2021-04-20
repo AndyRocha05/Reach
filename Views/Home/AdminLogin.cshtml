@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    
+        body{
+            
+        background-image: url("https://images.unsplash.com/photo-1530790359200-e2cac35c770d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80");        
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    h2{
+        color: white;
+    }
+    label{
+        color: white;
+    }
+    </style>
+    </head>
+        </div>
+@model AdminLogin
+<div class="d-flex">
+        <div class="col-lg-3">
+         <form action="/AdminLogin" method="post">
+            <h2>Admin Login</h2>
+        <div class="form-goup">
+            <label asp-for="LoginName"></label>
+            <input asp-for="LoginName" class="form-control" required>
+            <span asp-validation-for="LoginName" class="text-danger"></span>
+            </div>
+        <div class="form-goup">
+            <label asp-for="LoginPassword"></label>
+            <input asp-for="LoginPassword" class="form-control" required>
+            <span asp-validation-for="LoginPassword" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary">Login</button>
+            </form>
+            </div>

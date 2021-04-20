@@ -1,0 +1,6 @@
+_Migrations_
+.DS_Store
+**/bin/**
+**/obj/**
+**/.vscode
+appsettings.json

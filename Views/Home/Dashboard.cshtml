@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            
+        background-image: url("https://images.unsplash.com/photo-1530790359200-e2cac35c770d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80");        
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+    </style>
+    </head>
+
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/">Search</a>
+    <a class="dropdown-item" href="/DashBoard">Dashboard</a>
+      @if(ViewBag.CurrentUser != null){
+    <a class="dropdown-item" href="/NewChurch">Add Church</a>
+      }
+      else
+      {
+
+      }
+    @if(ViewBag.CurrentUser == null){
+    <a class="dropdown-item" href="/Login">Login</a>
+    }
+    else{
+    <a class="dropdown-item" href="/Logout">Logout</a>
+    }
+    <a class="dropdown-item" href="/AdminLogin">Admin</a>
+  </div>
+</div>
+    </div>
+    <div class="text-center">
+        <h1 class="display-4">Church Name and Locations</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Church Name</th>
+                <th>Organizations</th>
+                <th>Pastor Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var Chu in Model)
+            {
+                <tr>
+                    <td><a href="/ChurchInfo/@Chu.ChurchId">@Chu.ChurchName</a></td>
+                    <td>@Chu.Owner.Name</td>
+                    <td>@Chu.PastorsName </td>
+                    <td>@Chu.Address</td>
+                    <td>@Chu.City</td>
+                    <td>@Chu.State</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>

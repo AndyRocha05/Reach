@@ -1,0 +1,195 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+     
+        body{
+            
+        background-image: url("https://images.unsplash.com/photo-1530790359200-e2cac35c770d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80");        
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+    </style>
+    </head>
+
+@model Church
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/">Search</a>
+    <a class="dropdown-item" href="/DashBoard">Dashboard</a>
+      @if(ViewBag.CurrentUser != null){
+    <a class="dropdown-item" href="/NewChurch">Add Church</a>
+      }
+      else
+      {
+
+      }
+    @if(ViewBag.CurrentUser == null){
+    <a class="dropdown-item" href="/Login">Login</a>
+    }
+    else{
+    <a class="dropdown-item" href="/Logout">Logout</a>
+    }
+    <a class="dropdown-item" href="/AdminLogin">Admin</a>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <form action="/Church/New" method="post" class="form-horizontal">
+            <fieldset>
+                <!-- Address form -->
+
+                <h2>Church Address</h2>
+
+                <!-- full-name input-->
+                <div class="control-group">
+                    <label asp-for="ChurchName"></label>
+                    <div class="controls">
+                        <input asp-for="ChurchName" placeholder="Church name" class="input-xlarge">
+                        <span asp-validation-for="ChurchName" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label asp-for="OrganizationId"></label>
+                    <div class="controls">
+                        <select asp-for="OrganizationId" placeholder="Organization" class="input-xlarge">
+                            <option value="null">Select Organization</option>
+                             @foreach(var t in ViewBag.Org){
+                    <option value="@t.OrganizationId">@t.Name</option>
+                }
+                        </select>
+                        <span asp-validation-for="OrganizationId" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Pastors-name input-->
+                <div class="control-group">
+                    <label asp-for="PastorsName"></label>
+                    <div class="controls">
+                        <input asp-for="PastorsName" placeholder="Pastors name" class="input-xlarge">
+                        <span asp-validation-for="PastorsName" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Pastors-name input-->
+                <div class="control-group">
+                    <label asp-for="ImageUrl"></label>
+                    <div class="controls">
+                        <input asp-for="ImageUrl" placeholder="URL" class="input-xlarge">
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- address-line1 input-->
+                <div class="control-group">
+                    <label asp-for="Address"></label>
+                    <div class="controls">
+                        <input asp-for="Address" placeholder="Church Address" class="input-xlarge">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- city input-->
+                <div class="control-group">
+                    <label asp-for="City"></label>
+                    <div class="controls">
+                        <input asp-for="City"placeholder="city" class="input-xlarge">
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- postal-code input-->
+                <div class="control-group">
+                    <label asp-for="ZipCode"></label>
+                    <div class="controls">
+                        <input asp-for="ZipCode" placeholder="zipcode"class="input-xlarge">
+                        <span asp-validation-for="ZipCode" class="text-danger"></span> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label asp-for="State"></label>
+                    <div class="controls">
+                        <select asp-for="State" class="input-xlarge">
+                            <option value="" selected="selected">(please select a State)</option>
+                            <option value="Alabama">AL</option>
+                            <option value="Alaska">AK</option>
+                            <option value="Arizona">AZ</option>
+                            <option value="Arkansas">AR</option>
+                            <option value="California">CA</option>
+                            <option value="Colorado">CO</option>
+                            <option value="Connecticut">CT</option>
+                            <option value="District of Columbia">DC</option>
+                            <option value="Delaware">DE</option>
+                            <option value="Florida">FL</option>
+                            <option value="Georgia">GA</option>
+                            <option value="Hawaii">HI</option>
+                            <option value="Idaho">ID</option>
+                            <option value="Illinois">IL</option>
+                            <option value="Indiana">IN</option>
+                            <option value="Iowa">IA</option>
+                            <option value="Kansas">KS</option>
+                            <option value="Kentucky">KY</option>
+                            <option value="Louisiana">LA</option>
+                            <option value="Maine">ME</option>
+                            <option value="Maryland">MD</option>
+                            <option value="Massachusetts">MA</option>
+                            <option value="Michigan">MI</option>
+                            <option value="Minnesota">MN</option>
+                            <option value="Mississippi">MS</option>
+                            <option value="Missouri">MO</option>
+                            <option value="Montana">MT</option>
+                            <option value="Nebraska">NE</option>
+                            <option value="Nevada">NV</option>
+                            <option value="New Hempshire">NH</option>
+                            <option value="New Jersey">NJ</option>
+                            <option value="New Mexico">NM</option>
+                            <option value="New York">NY</option>
+                            <option value="North Carolina">NC</option>
+                            <option value="North Dakota">ND</option>
+                            <option value="Ohio">OH</option>
+                            <option value="Oklahoma">OK</option>
+                            <option value="Oregon">OR</option>
+                            <option value="Pennsylvania">PA</option>
+                            <option value="Rhode Island">RI</option>
+                            <option value="South Carolina">SC</option>
+                            <option value="South Dakota">SD</option>
+                            <option value="Tennessee">TN</option>
+                            <option value="Texas">TX</option>
+                            <option value="Utah">UT</option>
+                            <option value="Vermont">VT</option>
+                            <option value="Virginia">VA</option>
+                            <option value="Washington">WA</option>
+                            <option value="West Virginia">WV</option>
+                            <option value="Wisconsin">WI</option>
+                            <option value="Wyoming">WY</option>
+                        </select>
+                         <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Description-name input-->
+                <div class="control-group">
+                    <label asp-for="Description"></label>
+                    <div class="controls">
+                        <input asp-for="Description" placeholder="Description"
+                            class="input-xlarge">
+                         <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input asp-for="Accept" class="hidden">
+                    </div>
+                </div>
+                <button>Submit</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

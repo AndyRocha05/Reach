@@ -1,0 +1,44 @@
+@model User
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            
+        background-image: url("https://images.unsplash.com/photo-1530790359200-e2cac35c770d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80");        
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    </style>
+    </head>
+<div class="d-flex">
+    <div class="col-lg-6">
+        <form action="/New/User" method="post">
+            <h2>Register</h2>
+            <div class="form-goup">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-goup">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-goup">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-goup">
+                <label asp-for="Confirm"></label>
+                <input asp-for="Confirm" class="form-control">
+                <span asp-validation-for="Confirm" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <partial name="LoginFormPartial"></partial>
+    </div>
+</div>

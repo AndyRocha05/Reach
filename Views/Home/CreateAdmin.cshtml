@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    
+        body{
+            
+        background-image: url("https://images.unsplash.com/photo-1530790359200-e2cac35c770d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80");        
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        
+
+    </style>
+    </head>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/">Search</a>
+      @if(ViewBag.CurrentAdmin != null){
+    <a class="dropdown-item" href="/Final">Add Organizations</a>
+    <a class="dropdown-item" href="/AdminDash">Admin Dashboard</a>
+    <a class="dropdown-item" href="/CreateAdmin">Create Admin</a>
+
+      }
+      else
+      {
+
+      }
+    @if(ViewBag.CurrentAdmin == null){
+    <a class="dropdown-item" href="/AdminLogin">Admin</a>
+    }
+    else{
+    <a class="dropdown-item" href="/Logout">Logout</a>
+    }
+  </div>
+</div>
+@model Admin
+<div class="d-flex">
+    <div class="col-lg-6">
+        <form action="/New/Admin" method="post">
+            <h2>Add Admin</h2>
+            <div class="form-goup">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-goup">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-goup">
+                <label asp-for="Confirm"></label>
+                <input asp-for="Confirm" class="form-control">
+                <span asp-validation-for="Confirm" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .dropbtn {
+            background-color: #8CBED6;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+        body{
+            
+        background-image: url("https://images.unsplash.com/photo-1530790359200-e2cac35c770d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80");        
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+    </head>
+
+    <div class="dropdown">
+        <button class="dropbtn">Nav Menu</button>
+        <div class="dropdown-content">
+            <a href="">Search</a>
+            <a href="/Dashboard">DashBoard</a>
+            @if(User.Identity.IsAuthenticated){
+            <a href="/NewChurch">Creat New Church</a>
+            }
+            else{
+                
+            }
+            <a href="/Login">Login</a>
+            <a href="/AdminLogin">Admin</a>
+
+        </div>
+            </div>
+<h1>@ViewBag.AllChu.ChurchName</h1>
+<h2>ViewBag.AllChu.Owner.Name</h2>
+<img src="@ViewBag.AllChu.ImageUrl" alt="@ViewBag.AllChu.PastorsName">
+<h3>@ViewBag.AllChu.PastorsName</h3>
+<h3>@ViewBag.AllChu.Address</h3>
+<h3>@ViewBag.AllChu.City</h3>
+<h3>@ViewBag.AllChu.ZipCode</h3>
+<h3>@ViewBag.AllChu.State</h3>
+<iframe id="map"
+        width="350"
+        height="350"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAOfymIbIAyUr5Ddr9_5Xq5HlDokVoh0_Y&q=<@ViewBag.AllChu.Address, @ViewBag.AllChu.City >'>
+    </iframe>
+
